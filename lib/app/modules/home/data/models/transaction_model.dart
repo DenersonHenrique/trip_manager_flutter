@@ -15,7 +15,7 @@ class TransactionModel extends TransactionEntity {
         id: map['id'],
         title: map['title'],
         value: map['value'],
-        date: map['date'],
+        date: DateTime.parse(map['date']),
       );
 
   Map<String, dynamic> toJson() {
@@ -39,7 +39,7 @@ class TransactionModel extends TransactionEntity {
         'id': id,
         'title': title,
         'value': value,
-        'date': date,
+        'date': date.toIso8601String(),
       };
 
   factory TransactionModel.fromJson(String source) =>

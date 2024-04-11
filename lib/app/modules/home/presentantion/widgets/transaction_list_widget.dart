@@ -1,11 +1,11 @@
-import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-import '../../domain/entities/transaction_entity.dart';
 import '../../../../commons/extensions/build_context_extension.dart';
+import '../../domain/entities/transaction_entity.dart';
 
 class TransactionListWidget extends StatelessWidget {
-  final void Function(String) onRemove;
+  final void Function(TransactionEntity) onRemove;
   final List<TransactionEntity>? transactions;
 
   const TransactionListWidget({
@@ -25,7 +25,7 @@ class TransactionListWidget extends StatelessWidget {
                   height: context.screenHeight * 0.10,
                   child: Center(
                     child: Text(
-                      'Nenhuma transação cadastrada!',
+                      'Nenhuma despesa cadastrada!',
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ),
@@ -71,14 +71,14 @@ class TransactionListWidget extends StatelessWidget {
                 ),
                 trailing: MediaQuery.of(context).size.width > 480
                     ? TextButton.icon(
-                        onPressed: () => onRemove(transaction.id),
+                        onPressed: () => onRemove(transaction),
                         icon: const Icon(Icons.delete),
                         label: const Text('Excluir'),
                       )
                     : IconButton(
                         icon: const Icon(Icons.delete),
                         color: Theme.of(context).colorScheme.error,
-                        onPressed: () => onRemove(transaction.id),
+                        onPressed: () => onRemove(transaction),
                       ),
               ),
             );

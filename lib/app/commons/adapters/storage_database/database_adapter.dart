@@ -10,7 +10,7 @@ class DatabaseStorageAdapter extends IDatabaseStorage {
   bool get isOpen => _database != null;
 
   @override
-  String get databaseName => 'transacrion_database.db';
+  String get databaseName => 'transactions_trip_database.db';
 
   @override
   Future<void> onCreate(Database db, int version) async {
@@ -46,7 +46,17 @@ class DatabaseStorageAdapter extends IDatabaseStorage {
     List<dynamic>? arguments,
   ]) async {
     final db = await open();
-    return db.rawQuery(sql, arguments);
+    final List<Map<String, dynamic>> result = [];
+
+    // Execute a consulta e obtenha o resultado
+    final resultSet = await db.query(sql);
+
+    // Adicione cada linha do resultado ao resultado final
+    for (final row in resultSet) {
+      result.add(Map<String, dynamic>.from(row));
+    }
+
+    return result;
   }
 
   @override
@@ -77,12 +87,15 @@ class DatabaseStorageAdapter extends IDatabaseStorage {
 
   @override
   Future<int> delete(
-      String table, String where, List<dynamic> whereArgs) async {
+    String table,
+    String where,
+    List<dynamic> whereArgs,
+  ) async {
     final db = await open();
     return db.delete(table, where: where, whereArgs: whereArgs);
   }
 
-  final createTransactionTableQuery = '''CREATE TABLE transactions (
+  final createTransactionTableQuery = '''CREATE TABLE transactions_trip_table (
     id TEXT PRIMARY KEY,
     title TEXT,
     value REAL,

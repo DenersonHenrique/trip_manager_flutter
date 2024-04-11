@@ -18,7 +18,7 @@ class AuthViewModel extends ViewModel<AuthState> {
     emit(state.copyWith(isLoading: true));
 
     try {
-      final result = await _registerUsecase(params);
+      await _registerUsecase(params);
       emit(state.copyWith(isLoading: false));
     } catch (error) {
       emit(state.copyWith(hasError: true));

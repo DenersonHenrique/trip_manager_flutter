@@ -85,8 +85,8 @@ class _AuthFormWidgetState extends State<AuthFormWidget>
     _form.currentState?.save();
 
     LoginParamsEntity loginParams = LoginParamsEntity(
-      email: _authData["email"],
-      password: _authData["password"],
+      email: _authData['email'],
+      password: _authData['password'],
     );
 
     try {
@@ -114,7 +114,7 @@ class _AuthFormWidgetState extends State<AuthFormWidget>
             child: const Text(
               'Fechar',
             ),
-          )
+          ),
         ],
       ),
     );

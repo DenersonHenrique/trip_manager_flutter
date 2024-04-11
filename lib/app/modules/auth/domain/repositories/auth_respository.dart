@@ -1,5 +1,5 @@
-import '../entities/registered_user_entity.dart';
 import '../entities/login_params_entity.dart';
+import '../entities/registered_user_entity.dart';
 
 abstract class IAuthRepository {
   Future<RegisteredUserEntity> registerUser(LoginParamsEntity params);

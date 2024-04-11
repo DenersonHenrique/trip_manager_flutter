@@ -1,5 +1,5 @@
-import '../entities/registered_user_entity.dart';
 import '../entities/login_params_entity.dart';
+import '../entities/registered_user_entity.dart';
 import '../repositories/auth_respository.dart';
 
 abstract class IUserRegisterUsecase {

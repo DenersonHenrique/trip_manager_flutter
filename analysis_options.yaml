@@ -1,1 +1,22 @@
 include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  errors:
+    one_member_abstracts: ignore
+    todo: ignore
+    dead_code: error
+  exclude:
+    - "build/**"
+    - "**/*.g.dart"
+    - "**/*.mocks.dart"
+
+linter:
+  rules:
+    avoid_print: false
+    require_trailing_commas: true
+    prefer_single_quotes: true
+    directives_ordering: true
+    prefer_relative_imports: true
+    use_super_parameters: true
+    library_private_types_in_public_api: false
+    unnecessary_lambdas: true

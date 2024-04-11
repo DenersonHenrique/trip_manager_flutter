@@ -1,8 +1,8 @@
-import '../../domain/entities/registered_user_entity.dart';
 import '../../domain/entities/login_params_entity.dart';
+import '../../domain/entities/registered_user_entity.dart';
 import '../../domain/repositories/auth_respository.dart';
-import '../datasources/auth_remote_datasource.dart';
 import '../datasources/auth_local_datasource.dart';
+import '../datasources/auth_remote_datasource.dart';
 import '../models/user_model.dart';
 
 class AuthRepository implements IAuthRepository {
