@@ -23,7 +23,7 @@ class AuthRemoteDatasource extends IAuthRemoteDatasource {
   @override
   Future<RegisteredUserModel> signUp(UserModel model) async {
     const apiRegister =
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAbk2ISnNl7h0MsfuCsVPHg59Kf-joLLGE';
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[YOU_KEY]';
 
     try {
       final response = await _client.post(
@@ -48,7 +48,7 @@ class AuthRemoteDatasource extends IAuthRemoteDatasource {
   @override
   Future<RegisteredUserModel> authenticate(UserModel model) async {
     const apiAutheticate =
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAbk2ISnNl7h0MsfuCsVPHg59Kf-joLLGE';
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[YOU_KEY]';
 
     try {
       final response = await _client.post(

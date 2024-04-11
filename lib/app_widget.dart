@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'app/commons/adapters/storage_database/database_client.dart';
+
 class AppWidget extends StatefulWidget {
   const AppWidget({super.key});
 
@@ -9,6 +11,17 @@ class AppWidget extends StatefulWidget {
 }
 
 class _AppWidgetState extends State<AppWidget> {
+  late final IDatabaseStorage databaseProvider;
+
+  @override
+  void initState() {
+    super.initState();
+    // Obter a instância do IDatabaseStorage
+    databaseProvider = Modular.get<IDatabaseStorage>();
+    // Abrir o banco de dados
+    databaseProvider.open();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(

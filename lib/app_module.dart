@@ -5,6 +5,8 @@ import 'app/commons/adapters/http/http_client.dart';
 import 'app/commons/adapters/http/http_client_impl.dart';
 import 'app/commons/adapters/storage/storage_adapter.dart';
 import 'app/commons/adapters/storage/storage_client.dart';
+import 'app/commons/adapters/storage_database/database_adapter.dart';
+import 'app/commons/adapters/storage_database/database_client.dart';
 import 'app/modules/auth/auth_module.dart';
 import 'app/modules/home/home_module.dart';
 import 'app/modules/splash/presentation/splash_page.dart';
@@ -16,6 +18,7 @@ class AppModule extends Module {
     i.addLazySingleton<SharedPreferences>(SharedPreferences.getInstance);
     i.addSingleton<IHttpClient>(HttpClient.new);
     i.addSingleton<IStorageClient>(StorageAdapter.new);
+    i.addSingleton<IDatabaseStorage>(DatabaseStorageAdapter.new);
     i.addSingleton<SplashViewModel>(SplashViewModel.new);
   }
 
