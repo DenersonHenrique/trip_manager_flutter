@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 
 class TransactionEntity extends Equatable {
-  final String id;
-  final String title;
-  final double value;
-  final DateTime date;
+  final String? id;
+  final String? title;
+  final double? value;
+  final DateTime? date;
 
   const TransactionEntity({
     required this.id,

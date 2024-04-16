@@ -1,16 +1,9 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../commons/adapters/http/http_client.dart';
-import '../../commons/adapters/storage/storage_client.dart';
-import 'data/datasources/auth_local_datasource.dart';
-import 'data/datasources/auth_remote_datasource.dart';
-import 'data/repositories/auth_repository.dart';
-import 'domain/repositories/auth_respository.dart';
-import 'domain/usecases/login_with_credentials_usecase.dart';
-import 'domain/usecases/user_register_usecase.dart';
+import '../../commons/commons.dart';
+import 'auth.dart';
 import 'presentation/auth_page.dart';
 import 'presentation/auth_viewmodel.dart';
-import 'services/auth_service.dart';
 
 class AuthModule extends Module {
   @override

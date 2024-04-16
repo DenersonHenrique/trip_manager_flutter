@@ -25,4 +25,10 @@ class TransactionsRepository implements ITransactionsRepository {
     final model = TransactionModel.fromEntity(entity).toMap;
     return await _transactionsDatasource.remove(model);
   }
+
+  @override
+  Future<void> updateTransaction(TransactionEntity entity) async {
+    final model = TransactionModel.fromEntity(entity).toMap;
+    return await _transactionsDatasource.edit(model);
+  }
 }

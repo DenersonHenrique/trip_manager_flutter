@@ -39,7 +39,7 @@ class TransactionModel extends TransactionEntity {
         'id': id,
         'title': title,
         'value': value,
-        'date': date.toIso8601String(),
+        'date': date?.toIso8601String(),
       };
 
   factory TransactionModel.fromJson(String source) =>

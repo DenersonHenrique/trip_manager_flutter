@@ -1,9 +1,8 @@
+import '../../../firebase_options.dart';
+
 class ConstsApi {
-  static String pokeApiSpeciesUrl =
-      'https://pokeapi.co/api/v2/pokemon-species/';
-  static String pokeApiDetailUrl = 'https://pokeapi.co/api/v2/pokemon/';
-  static String pokeApiUrl =
-      'https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json';
-  static String pokeImageUrl =
-      'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/';
+  static String signUpApiUrl =
+      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${DefaultFirebaseOptions.android.apiKey}';
+  static String authenticateApiUrl =
+      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${DefaultFirebaseOptions.android.apiKey}';
 }

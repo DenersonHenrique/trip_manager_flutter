@@ -1,7 +1,6 @@
 import 'dart:convert';
 
-import '../../../../commons/adapters/http/http_client.dart';
-import '../../../../commons/adapters/storage/storage_client.dart';
+import '../../../../commons/commons.dart';
 import '../../../../commons/helpers/errors/erros.dart';
 import '../models/registered_user_model.dart';
 import '../models/user_model.dart';
@@ -22,12 +21,9 @@ class AuthRemoteDatasource extends IAuthRemoteDatasource {
 
   @override
   Future<RegisteredUserModel> signUp(UserModel model) async {
-    const apiRegister =
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[YOUR_KEY]';
-
     try {
       final response = await _client.post(
-        apiRegister,
+        ConstsApi.signUpApiUrl,
         data: json.encode({
           'email': model.email,
           'password': model.password,
@@ -47,12 +43,9 @@ class AuthRemoteDatasource extends IAuthRemoteDatasource {
 
   @override
   Future<RegisteredUserModel> authenticate(UserModel model) async {
-    const apiAutheticate =
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[YOUR_KEY]';
-
     try {
       final response = await _client.post(
-        apiAutheticate,
+        ConstsApi.authenticateApiUrl,
         data: json.encode({
           'email': model.email,
           'password': model.password,

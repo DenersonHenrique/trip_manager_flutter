@@ -5,13 +5,18 @@ import '../../../../commons/extensions/build_context_extension.dart';
 import '../../domain/entities/transaction_entity.dart';
 
 class TransactionListWidget extends StatelessWidget {
-  final void Function(TransactionEntity) onRemove;
   final List<TransactionEntity>? transactions;
+  final void Function(TransactionEntity) onRemove;
+  final void Function(
+    BuildContext context,
+    TransactionEntity? transaction,
+  ) onEdit;
 
   const TransactionListWidget({
     super.key,
-    required this.transactions,
+    required this.onEdit,
     required this.onRemove,
+    required this.transactions,
   });
 
   @override
@@ -58,28 +63,45 @@ class TransactionListWidget extends StatelessWidget {
                     padding: const EdgeInsets.all(15.0),
                     child: FittedBox(
                       child:
-                          Text('R\$${transaction?.value.toStringAsFixed(2)}'),
+                          Text('R\$${transaction!.value?.toStringAsFixed(2)}'),
                     ),
                   ),
                 ),
                 title: Text(
-                  transaction!.title,
+                  transaction.title!,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 subtitle: Text(
-                  DateFormat('d MMM y').format(transaction.date),
+                  DateFormat('dd/MM/y').format(transaction.date!),
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
-                trailing: MediaQuery.of(context).size.width > 480
-                    ? TextButton.icon(
-                        onPressed: () => onRemove(transaction),
-                        icon: const Icon(Icons.delete),
-                        label: const Text('Excluir'),
-                      )
-                    : IconButton(
-                        icon: const Icon(Icons.delete),
-                        color: Theme.of(context).colorScheme.error,
-                        onPressed: () => onRemove(transaction),
-                      ),
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    MediaQuery.of(context).size.width > 480
+                        ? TextButton.icon(
+                            onPressed: () => onEdit(context, transaction),
+                            icon: const Icon(Icons.edit),
+                            label: const Text('Editar'),
+                          )
+                        : IconButton(
+                            icon: const Icon(Icons.edit),
+                            color: Theme.of(context).colorScheme.secondary,
+                            onPressed: () => onEdit(context, transaction),
+                          ),
+                    MediaQuery.of(context).size.width > 480
+                        ? TextButton.icon(
+                            onPressed: () => onRemove(transaction),
+                            icon: const Icon(Icons.delete),
+                            label: const Text('Excluir'),
+                          )
+                        : IconButton(
+                            icon: const Icon(Icons.delete),
+                            color: Theme.of(context).colorScheme.error,
+                            onPressed: () => onRemove(transaction),
+                          ),
+                  ],
+                ),
               ),
             );
           },
